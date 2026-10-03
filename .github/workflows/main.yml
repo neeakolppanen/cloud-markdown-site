@@ -1,0 +1,20 @@
+name: Tarkista Markdown
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  tarkistus:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hae repository
+        uses: actions/checkout@v4
+
+      - name: Tarkista README
+        run: |
+          test -f README.md
+          echo "README.md löytyi"
